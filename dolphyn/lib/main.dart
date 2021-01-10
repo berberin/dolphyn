@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hex/hex.dart';
 
 import 'app/data/service/services.dart';
-import 'app/modules/homepage/homescreen.dart';
+import 'app/modules/homepage/lobby.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             .apply(displayColor: priText, bodyColor: secText),
       ),
       debugShowCheckedModeBanner: false,
-      home: Services.hadPrivateKey ? HomeScreen() : LoginScreen(),
+      home: Services.hadPrivateKey ? Lobby() : LoginScreen(),
     );
   }
 }

@@ -1,7 +1,5 @@
 import 'package:dolphyn/app/data/models/token.dart';
 import 'package:dolphyn/app/data/service/api_service.dart';
-import 'package:dolphyn/app/data/service/wallet_service.dart';
-import 'package:dolphyn/app/modules/buy_datatoken_page/buy_datatoken_screen.dart';
 import 'package:dolphyn/app/modules/homepage/token_card.dart';
 import 'package:dolphyn/app/widgets/dialogs/custom_dialog.dart';
 import 'package:dolphyn/constants.dart';
@@ -57,16 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    WalletService.checkBalance().then((value) {
-      if (value < 99000000000000000.0) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => BuyDataTokenScreen(),
-          ),
-        );
-      }
-    });
     tokens = ApiService.getTokenInfo();
   }
 }

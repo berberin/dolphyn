@@ -1,5 +1,5 @@
 import 'package:dolphyn/app/data/service/wallet_service.dart';
-import 'package:dolphyn/app/modules/homepage/homescreen.dart';
+import 'package:dolphyn/app/modules/homepage/lobby.dart';
 import 'package:dolphyn/app/modules/login/import_dialog.dart';
 import 'package:dolphyn/app/widgets/dialogs/custom_dialog.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => HomeScreen(),
+                      builder: (context) => Lobby(),
                     ),
                   );
                 },
