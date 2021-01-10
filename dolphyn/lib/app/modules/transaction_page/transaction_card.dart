@@ -1,5 +1,7 @@
+import 'package:dolphyn/app/data/models/holder.dart';
 import 'package:dolphyn/app/data/models/token.dart';
 import 'package:dolphyn/app/data/models/transaction.dart';
+import 'package:dolphyn/app/modules/transaction_page/transaction_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -33,24 +35,56 @@ class TransactionCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SelectableText(
-                      'From: ${tx.from}',
-                      style: Theme.of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(fontSize: 11),
-                      maxLines: 1,
+                    InkWell(
+                      onTap: () {
+                        if (tx.from == address) {
+                          return;
+                        }
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TransactionScreen(
+                              tokenInfo: tokenInfo,
+                              holder: Holder(address: tx.from),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'From: ${tx.from}',
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(fontSize: 11),
+                        maxLines: 1,
+                      ),
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    SelectableText(
-                      'To: ${tx.to}',
-                      style: Theme.of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(fontSize: 11),
-                      maxLines: 1,
+                    InkWell(
+                      onTap: () {
+                        if (tx.to == address) {
+                          return;
+                        }
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TransactionScreen(
+                              tokenInfo: tokenInfo,
+                              holder: Holder(address: tx.to),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'To: ${tx.to}',
+                        style: Theme.of(context)
+                            .textTheme
+                            .caption
+                            .copyWith(fontSize: 11),
+                        maxLines: 1,
+                      ),
                     ),
                     SizedBox(
                       height: 10,
@@ -69,7 +103,7 @@ class TransactionCard extends StatelessWidget {
                                       '${(double.parse(tx.value) / (1000000000000000000)).toStringAsFixed(3)}  ',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .caption
+                                      .bodyText1
                                       .copyWith(color: secText)),
                               TextSpan(
                                 text: '${tokenInfo.symbol}',

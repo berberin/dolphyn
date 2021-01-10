@@ -11,7 +11,7 @@ class Holder {
   double balance;
   double share;
 
-  Holder();
+  Holder({this.address, this.balance, this.share});
 
   factory Holder.fromJson(Map<String, dynamic> json) => _$HolderFromJson(json);
 

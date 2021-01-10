@@ -1,6 +1,5 @@
 import 'package:dolphyn/app/data/service/wallet_service.dart';
 import 'package:dolphyn/app/modules/homepage/lobby.dart';
-import 'package:dolphyn/app/widgets/dialogs/custom_dialog.dart';
 import 'package:dolphyn/app/widgets/text_form.dart';
 import 'package:flutter/material.dart';
 
@@ -69,20 +68,14 @@ class _ImportDialogState extends State<ImportDialog> {
                   child: Text("IMPORT"),
                   color: secText,
                   onPressed: () async {
-                    showLoadingDialog(context);
-                    try {
-                      await WalletService.init(
-                          privateKey: _privateKeyCtrl.text);
-                      Navigator.pop(context);
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Lobby(),
-                        ),
-                      );
-                    } catch (e) {
-                      print(e);
-                    }
+                    await WalletService.init(privateKey: _privateKeyCtrl.text);
+                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Lobby(),
+                      ),
+                    );
                   },
                 ),
               ],

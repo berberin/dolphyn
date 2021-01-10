@@ -38,11 +38,13 @@ class HolderCard extends StatelessWidget {
                 child: CircularPercentIndicator(
                   radius: 50,
                   lineWidth: 7.0,
-                  percent: holder.share / 100,
+                  percent: holder.share != null ? holder.share / 100 : 0,
                   backgroundColor: Colors.blueGrey[200],
                   progressColor: secText,
                   center: Text(
-                    '${holder.share.toStringAsFixed(1)}%',
+                    holder.share != null
+                        ? '${holder.share.toStringAsFixed(1)}%'
+                        : '---',
                     style: Theme.of(context)
                         .textTheme
                         .caption
@@ -69,15 +71,18 @@ class HolderCard extends StatelessWidget {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                  text:
-                                      'Balance: ${(holder.balance / (1000000000000000000)).toStringAsFixed(3)}  ',
-                                  style: Theme.of(context).textTheme.caption),
+                                text: 'Balance: ',
+                                style: Theme.of(context).textTheme.caption,
+                              ),
+                              TextSpan(
+                                text: holder.balance != null
+                                    ? '${(holder.balance / (1000000000000000000)).toStringAsFixed(3)}  '
+                                    : '---   ',
+                                style: Theme.of(context).textTheme.bodyText1,
+                              ),
                               TextSpan(
                                 text: '${tokenInfo.symbol}',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .caption
-                                    .copyWith(color: secText),
+                                style: Theme.of(context).textTheme.caption,
                               ),
                             ],
                           ),
