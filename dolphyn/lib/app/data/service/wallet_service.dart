@@ -27,11 +27,13 @@ class WalletService {
       return IOWebSocketChannel.connect(rpcUrl).cast<String>();
     });
     abiFile = await rootBundle.loadString("assets/abi.json");
+
     // _wallet = await createNewWallet();
     contract = DeployedContract(
       ContractAbi.fromJson(abiFile, "OceanProtocol"),
       EthereumAddress.fromHex(contractAddress),
     );
+    getBalanceFunc = contract.function('balanceOf');
     if (privateKey != null) {
       _wallet = await importWallet(privateKey);
       await savePrivateKey();
@@ -68,6 +70,7 @@ class WalletService {
         contract: contract,
         function: getBalanceFunc,
         params: [await _wallet.privateKey.extractAddress()]);
+    print(balance);
     return double.parse(balance[0].toString());
   }
 }
