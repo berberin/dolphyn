@@ -24,7 +24,7 @@ class _BuyDataTokenScreenState extends State<BuyDataTokenScreen> {
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Text(
                     'Oops, you don\'t have enough Lovely Dolphin Datatoken (LOVDOL-69). You will need at least 1 LOVDOL-69 to use this application. You can go to Ocean to buy some.',
                     style: TextStyle(
