@@ -1,3 +1,4 @@
+import 'package:dolphyn/app/data/service/wallet_service.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Services {
@@ -7,6 +8,9 @@ class Services {
   static init() async {
     secureStorage = FlutterSecureStorage();
     String privateKey = await Services.secureStorage.read(key: 'privateKey');
-    hadPrivateKey = privateKey == null;
+    hadPrivateKey = privateKey != null;
+    if (privateKey != null) {
+      await WalletService.init(privateKey: privateKey);
+    }
   }
 }
