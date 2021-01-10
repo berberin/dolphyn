@@ -1,5 +1,6 @@
 import 'package:dolphyn/app/data/service/wallet_service.dart';
 import 'package:dolphyn/app/modules/login/login_page.dart';
+import 'package:dolphyn/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        textTheme: GoogleFonts.ubuntuTextTheme(),
+        textTheme: GoogleFonts.ubuntuTextTheme()
+            .apply(displayColor: priText, bodyColor: secText),
       ),
       debugShowCheckedModeBanner: false,
       home: Services.hadPrivateKey ? HomeScreen() : LoginScreen(),
