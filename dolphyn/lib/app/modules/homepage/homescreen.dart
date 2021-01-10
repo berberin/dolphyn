@@ -36,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 builder: (BuildContext context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
+                      physics: BouncingScrollPhysics(),
                       itemCount: snapshot.data.length,
                       itemBuilder: (context, index) {
                         return TokenCard(snapshot.data[index]);

@@ -37,6 +37,15 @@ class ApiService {
     for (var tx in response.data["receive"]) {
       trans.add(Transaction.fromJson(tx));
     }
+    trans.sort((a, b) {
+      if (a.timestamp > b.timestamp) {
+        return -1;
+      }
+      if (a.timestamp < b.timestamp) {
+        return 1;
+      }
+      return 0;
+    });
     return trans;
   }
 }

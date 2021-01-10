@@ -47,6 +47,7 @@ class _TokenScreenState extends State<TokenScreen> {
                   builder: (BuildContext context, snapshot) {
                     if (snapshot.hasData) {
                       return ListView.builder(
+                        physics: BouncingScrollPhysics(),
                         itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {
                           return HolderCard(

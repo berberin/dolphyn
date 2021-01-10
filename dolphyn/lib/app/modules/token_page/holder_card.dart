@@ -43,7 +43,10 @@ class HolderCard extends StatelessWidget {
                   progressColor: secText,
                   center: Text(
                     '${holder.share.toStringAsFixed(1)}%',
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context)
+                        .textTheme
+                        .caption
+                        .copyWith(fontSize: 10),
                   ),
                 ),
               ),
